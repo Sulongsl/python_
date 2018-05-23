@@ -19,3 +19,7 @@ def add2(request, a, b):
 def index(request):
 	# 这里的rnder是渲染模板
 	return render(request, 'home.html')
+
+def home_spring(request):
+	spring  =u"我在自强学堂学习Django，用它来建网站"
+	return render(request,'home_spring.html',{'string':spring})

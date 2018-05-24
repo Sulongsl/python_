@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import pymysql
+
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,14 +32,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-	'django.contrib.admin',
-	'django.contrib.auth',
-	'django.contrib.contenttypes',
-	'django.contrib.sessions',
-	'django.contrib.messages',
-	'django.contrib.staticfiles',
+	'django.contrib.admin',			 # admin管理后台站点
+	'django.contrib.auth',			 # 身份认证系统
+	'django.contrib.contenttypes',   # 内容类型框架
+	'django.contrib.sessions', 		 # 会话框架
+	'django.contrib.messages',		 # 消息框架
+	'django.contrib.staticfiles',    # 静态文件管理框架
 
 	'cmdb',
+	'polls',
 ]
 
 MIDDLEWARE = [
@@ -73,13 +77,27 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 
-
 DATABASES = {
 	'default': {
-		'ENGINE': 'django.db.backends.sqlite3', # 指定使用的数据库类型
-		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), #  django自带轻量级数据库sqlite3
+		'ENGINE': 'django.db.backends.mysql',
+		# ENGINE（引擎）  是
+		# django.db.backends.sqlite3、
+		# django.db.backends.postgresql、
+		# django.db.backends.mysql、
+		# django.db.backends.oracle，当然其它的也行
+		'NAME': 'mysite',  # 类似Mysql数据库管理系统中用于保存项目内容的数据库的名字
+		'HOST': 'localhost',
+		'USER': 'root',
+		'PASSWORD': 'sulong@20161010',
+		'PORT': '3306',
 	}
 }
+# DATABASES = {
+# 	'default': {
+# 		'ENGINE': 'django.db.backends.sqlite3', # 指定使用的数据库类型
+# 		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), #  django自带轻量级数据库sqlite3
+# 	}
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -102,9 +120,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh_Hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'  # 设置时区
 
 USE_I18N = True
 
@@ -118,5 +136,5 @@ USE_TZ = True
 STATIC_URL = '/static/'  # 引用指针 不是具体的目录 需要在 html文件中与之对应
 
 STATICFILES_DIRS = (
-	os.path.join(BASE_DIR,'static'), # 元组 都好不可省略
+	os.path.join(BASE_DIR, 'static'),  # 元组 都好不可省略
 )

@@ -27,3 +27,6 @@ def index(request):
 	# temp = {"user":username,"pwd":password}
 	# user_list.append(temp)
 	return render(request, "index.html", {"data": user_list})
+
+def demo_1(request):
+	return render(request,"demo_1.html")

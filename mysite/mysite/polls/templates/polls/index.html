@@ -1,17 +1,21 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"/>
+
+
 {% if latest_question_list %}
-    <ul>
+<ul>
     {% for question in latest_question_list %}
 
-        <!--删除模板中硬编码的URLs-->
-        <!--运用在urls文件中的 name参数 解决问题-->
+    <!--删除模板中硬编码的URLs-->
+    <!--运用在urls文件中的 name参数 解决问题-->
     <!--<li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>-->
-        <!--将 href 标签改为如下-->
+    <!--将 href 标签改为如下-->
     <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
 
-        <!--Django会在polls.urls文件中查找name='detail'的url，具体的就是下面这行：-->
+    <!--Django会在polls.urls文件中查找name='detail'的url，具体的就是下面这行：-->
 
     {% endfor %}
-    </ul>
+</ul>
 {% else %}
-    <p>No polls are available.</p>
+<p>No polls are available.</p>
 {% endif %}

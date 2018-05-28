@@ -138,3 +138,7 @@ STATIC_URL = '/static/'  # 引用指针 不是具体的目录 需要在 html文�
 STATICFILES_DIRS = (
 	os.path.join(BASE_DIR, 'static'),  # 元组 都好不可省略
 )
+
+MEDIA_ROOT = '/Users/sulong/'  # 上传文件 在服务器中的基本路径（为了性能考虑，这些文件不会被储存在数据库中）
+
+MEDIA_URL = '/Users/sulong/uploads/'  # 指向上传文件的基本路径

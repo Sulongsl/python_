@@ -355,11 +355,11 @@ class Restaurant(Place):
 		
 		
 '''
-class OrderedPerson(Person):
-	class Meta:
-		# 现在，普通的Person查询是无序的，而OrderedPerson查询会按照`last_name`排序。
-		ordering = ["last_name"]
-		proxy = True
+# class OrderedPerson(Person):
+# 	class Meta:
+# 		# 现在，普通的Person查询是无序的，而OrderedPerson查询会按照`last_name`排序。
+# 		ordering = ["last_name"]
+# 		proxy = True
 
 '''
 	6.多重继承

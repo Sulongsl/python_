@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 from login import views
+from django.conf.urls import include
 
 '''
 URL设计
@@ -39,5 +40,6 @@ urlpatterns = [
     url(r'^login/',views.login),
     url(r'register/',views.register),
     url(r'^logout',views.logout),
+    url(r'^captcha', include('captcha.urls'))  # 增加这一行
 
 ]

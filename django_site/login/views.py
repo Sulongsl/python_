@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 
 from . import forms
 from . import models
+import hashlib
 
 
 # Create your views here.
@@ -28,11 +29,10 @@ def login(request):
 			# username = username.strip()  # 通过strip()方法，将用户名前后无效的空格剪除；
 			try:
 				user = models.User.objects.get(name=username)
-				if user.password == password:
+				if user.password == hash_code(password):
 					request.session['is_login'] = True
 					request.session['user_id'] = user.id
 					request.session['user_name'] = user.name
-
 					return redirect('/index/')
 				else:
 					message = '密码错误~'
@@ -74,7 +74,7 @@ def register(request):
 
 				new_user = models.User()
 				new_user.name = username
-				new_user.password = password1
+				new_user.password = hash_code(password1)
 				new_user.email = email
 				new_user.sex = sex
 				new_user.is_delted = False
@@ -94,3 +94,10 @@ def logout(request):
 	# del request.session['user_id']
 	# del request.session['user_name']
 	return redirect("/index/")
+
+
+def hash_code(s, salt='mysite'):
+	h = hashlib.sha256()
+	s += salt
+	h.update(s.encode())
+	return h.hexdigrst()

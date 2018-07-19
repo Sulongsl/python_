@@ -17,6 +17,7 @@ def index(request):
 
 
 def login(request):
+	#
 	if request.session.get('is_login', ):
 		return redirect("/index/")
 	if request.method == "POST":
@@ -29,7 +30,7 @@ def login(request):
 			# username = username.strip()  # 通过strip()方法，将用户名前后无效的空格剪除；
 			try:
 				user = models.User.objects.get(name=username)
-				if user.password == hash_code(password):
+				if user.password == password:
 					request.session['is_login'] = True
 					request.session['user_id'] = user.id
 					request.session['user_name'] = user.name
@@ -50,7 +51,7 @@ def register(request):
 		return redirect("/index/")
 	if request.method == "POST":
 		register_form = forms.RegisterForm(request.POST)
-		message = "请检查填写的内容！"
+		# message = "请检查填写的内容！"
 		if register_form.is_valid():  # 获取数据
 			username = register_form.cleaned_data['username']
 			password1 = register_form.cleaned_data['password1']
@@ -101,3 +102,4 @@ def hash_code(s, salt='mysite'):
 	s += salt
 	h.update(s.encode())
 	return h.hexdigrst()
+

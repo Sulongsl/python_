@@ -1,0 +1,55 @@
+<!--<!DOCTYPE html> 告诉浏览器以DOCTYPE规范去解析html网页-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--head顾名思义 就是这个网站的标题-->
+    <meta charset="UTF-8">
+    <!--指定5 秒刷新一次页面-->
+    <!--<meta http-equiv="refresh" content="5">-->
+    <title>朱李叶</title>
+</head>
+<body>
+<!--body中存在的就是这个网站的内容-->
+<div style="background-color: #00e765">
+    <p>Hello python</p>
+</div>
+<span style="background-color: #7adddd">
+    Life is short,i use python!
+</span>
+<p>
+<a href="http://www.baidu.com/">a标签是用来跳转的</a>
+    </p>
+    <!--<iframe style="width: 100%;height: 2000px;"src="http://baidu.com"></iframe>-->
+<a href="#i1">第一张</a>
+<div id ="i1" style="height: 500px" ;>孟子辰</div>
+<h1>请输入用户名</h1>
+<p><input type="text" /> </p>
+<h2>请输入密码</h2>
+<p><input type="password"/></p>
+<h3>这是一个复选框</h3>
+<!--如果需要传指定value-->
+
+<p>爱好：<br />
+电竞 <input type="checkbox" checked ="checked" /> <br/>
+跑步 <input type="checkbox" checked ="checked" /> <br/>
+健身 <input type="checkbox" checked ="checked" value="02378"/> <br/>
+旅行 <input type="checkbox" />
+</p>
+
+<input type="submit" value="提交当前表单下的内容">
+<input type="button" value="默认无功能的提交">
+<input type="reset" value="充值当前表单下的内容">
+<p>
+    <form action="http://localhost:8000/index/" method="post" enctype="multipart/form-data">
+    <input type="text" name="fafafa">
+</form>
+<p>文件：
+    <input type="file" name="fafafa1">
+</p>
+</p>
+<p>
+    <input type="email">
+</p>
+<p>备注：<textarea></textarea></p>
+</body>
+</html>

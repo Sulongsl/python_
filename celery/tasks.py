@@ -26,6 +26,7 @@ app = Celery('tasks',broker='mongo://guest@localhost//')
 def say(x,y):
 	time.sleep(3)
 	return x+y
-
+def add():
+	pass
 if __name__ == '__main__':
 	say("hello","world")

@@ -1,2 +1,1 @@
-# python_miniapps
-小程序
+# python_diango
